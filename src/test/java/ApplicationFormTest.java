@@ -2,15 +2,22 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ApplicationFormTest {
 
-    private WebDriver driver;
+    private static WebDriver driver;
+
 
     @BeforeAll
     static void setUpAll() {
-// убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
+
         System.setProperty("webdriver.chrome.driver", "./driver/mac/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
 
     @BeforeEach
@@ -23,6 +30,7 @@ public class ApplicationFormTest {
         driver.quit();
         driver = null;
     }
+
 
     @Test
     void shouldTestForm() {
