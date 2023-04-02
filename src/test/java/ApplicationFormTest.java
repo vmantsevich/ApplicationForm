@@ -1,14 +1,20 @@
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 public class ApplicationFormTest {
 
     private static WebDriver driver;
 
 
     @BeforeAll
+    static void setupAll() {
+        WebDriverManager.chromedriver().setup();
+    }
     static void setUpAll() {
 
         System.setProperty("webdriver.chrome.driver", "./driver/mac/chromedriver");
