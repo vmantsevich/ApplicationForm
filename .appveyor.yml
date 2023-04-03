@@ -13,6 +13,6 @@ install:
   - java -jar ./artifacts/app-order.jar &
 
 build_script:
-  - chmod +x gradlew
-  - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
-  - Dselenide.headless=true #запускаем селенид
+  build_script:
+    - chmod +x gradlew
+    - ./gradlew test --info -Dselenide.headless=true
